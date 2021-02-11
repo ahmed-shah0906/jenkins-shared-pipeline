@@ -8,7 +8,7 @@ def call(Map stageParams) {
   }
 
 
-def List<PackageSource> getNugetSources(){
+def List<PackageSource> getNugetSources(Map stageParams){
     List<PackageSource> nugetPackageSources =[ new PackageSource(key: "Nuget_Feed", sourceUrl: "https://api.nuget.org/v3/index.json"),
 	                                           new PackageSource(
 																	key: "Source_Prod",
@@ -19,7 +19,7 @@ def List<PackageSource> getNugetSources(){
 											 ]
 
 	        												
-	if(!BRANCH_NAME.equals('master')){
+	if(!stageParams.branch.equals('master')){
       nugetPackageSources.add(new PackageSource(
 												  key: "Source_Dev",
 												  sourceUrl: "https://abc.io/dev",
