@@ -11,11 +11,12 @@ class TestArtifacts extends PipelineTestBase {
          def script = loadScript('vars/artifacts.groovy')
 
       when:
-         String result = script.getArtifactPath('CI/BusinessService/','feature/pdf')
+         Map inputParam = [repo: 'Path_To_Repo_Test/' , branchName: 'feature/pdf']
+         String result = script.getArtifactPath(inputParam)
 
       then:
          assertJobStatusSuccess()
-         assertThat result, equalTo('CI/BusinessService/feature%2Fpdf')
+         assertThat result, equalTo('Path_To_Repo_Test/feature%2Fpdf')
    }
 
    def "getArtifactPath throw assertion error"() {
@@ -23,7 +24,7 @@ class TestArtifacts extends PipelineTestBase {
          def script = loadScript('vars/artifacts.groovy')
 
       when:
-         String result = script.getArtifactPath(null,null)
+         String result = script.getArtifactPath(null)
 
       then:
          assertJobStatusSuccess()

@@ -10,8 +10,10 @@ pipeline {
         
         stage('Print Artifact Path'){
             steps{
-                    Map filePath = [repo: 'Path_To_Repo_Global/' , branchName: 'feature/pdf']
-                    echo artifacts.getArtifactPath(filePath)  
+                script {
+                    Map filePath = [repo: 'Path_To_Repo_Folder/' , branchName: 'feature/pdf']
+                    echo artifacts.getArtifactPath(filePath)
+                }
             }
         }
    }

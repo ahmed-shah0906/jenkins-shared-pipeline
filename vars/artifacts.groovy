@@ -3,6 +3,7 @@ def getArtifactFileName(String branchName, String zipPackageType) {
 }
 
 def getArtifactPath(Map inputParam){
+    assert inputParam : 'repo and branchName is required'
     assert inputParam.repo : 'repo name is required'
     assert inputParam.branchName : 'branch name is required'
     return inputParam.repo + inputParam.branchName.replace("/","%2F")
