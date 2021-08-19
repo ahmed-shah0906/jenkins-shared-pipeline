@@ -2,7 +2,8 @@ def getArtifactFileName(String branchName, String zipPackageType) {
     return branchName.replace("/","-")+"-$zipPackageType"+".zip"+"Artifacts"
 }
 
-def getArtifactPath(String repo, String branchName){
-    assert repo : 'repo name is required'
-    return repo + branchName.replace("/","%2F")
+def getArtifactPath(Map inputParam){
+    assert inputParam.repo : 'repo name is required'
+    assert inputParam.branchName : 'branch name is required'
+    return inputParam.repo + inputParam.branchName.replace("/","%2F")
 }
